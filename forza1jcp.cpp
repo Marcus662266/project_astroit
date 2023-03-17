@@ -28,7 +28,8 @@ int main()
     // Stampo la griglia di gioco
     cout << endl;
     cout << endl;
-    cout << "-------------------------------------------------";
+    cout << "-------------------------------------------------"<< endl;
+    
     for (int i = 0; i < RIGHE; i++) 
     {
         cout << endl;

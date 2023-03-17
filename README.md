@@ -2,13 +2,13 @@
 ===Progetto For(za4)===
 
 
-#===Introduzione===
+# Introduzione
 
 Questo progetto viene realizzato per il corso di ingegneria del software della società ASTROIT.
 Il progetto consiste nella creazione del gioco "Forza 4", nel quale sarà possibile giocare in locale o in rete.
 Il programma viene creato in C++ utilizzando:
 
-- Librerie adoperate durante il corso:
+# Librerie adoperate durante il corso:
                                         - <iostream>
                                         - <string>
                                         - <array>
@@ -77,5 +77,5 @@ Il gioco termina automaticamente (il programma effetua il controllo) quando uno 
 -------------------------------------------------
    1      2      3      4      5      6      7   
 
-    Grazie per aver scaricato questo progetto. 
-               Buon divertimento.
+                     Grazie per aver scaricato questo progetto. 
+                                Buon divertimento a presto.

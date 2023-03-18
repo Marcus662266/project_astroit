@@ -3,24 +3,14 @@
 #include <string>
 #include <random>
 #include <vector>
-
 using namespace std;
 
 // Inizializzo le "variabili" COSTANTI
 const char VUOTO = '-';
-const char NUMERO_GIOCATORI = 2;
 const int RIGHE = 6;
 const int COLONNE = 7;
-const int GIOCATORE_1 = 0;
-const int GIOCATORE_2 = 1;
-const int COMPUTER = 2;
-const int GIOCATORE_1_VINCE = 1;
-const int GIOCATORE_2_VINCE = 2;
-const int PAREGGIO = 3;
-const int GIOCO_IN_CORSO = 4;
 
-// Stampa il titolo del programma
-void stampaTitolo(void)
+void stampaLogo(void)
 {
     cout << endl;
     cout << " ========================================================  \n";
@@ -32,43 +22,35 @@ void stampaTitolo(void)
     cout << "|  /  /     / /__/ / /  / | | /  /___ /  / |  | /____  | | \n";
     cout << "| /__/     /______/ /__/  |_|/______//__/  |__|      |_| | \n";
     cout << " ========================================================  \n";
-    cout << "                        Create by... Serge, Marco, Jacopo  \n";
+    cout << "                        Create by... Serge, Marco, Jacopo    ";
 }
 
-// Stampa la tabella di gioco
-void stampaTabella(char matrice[RIGHE][COLONNE])
+int main()
 {
+    stampaLogo();
+    char griglia[RIGHE][COLONNE]; // Inizializzo la griglia
+
+    // Stampo la griglia di gioco
     cout << endl;
     cout << endl;
-    cout << "-------------------------------------------------";
-    for (int i = 0; i < RIGHE; i++)
+    cout << "-------------------------------------------------"<< endl;
+    
+    for (int i = 0; i < RIGHE; i++) 
     {
         cout << endl;
         for (int j = 0; j < COLONNE; j++)
         {
-            cout << matrice[i][j] << "|  " << VUOTO << "  |";
+            cout << griglia [i][j] << "|  " << VUOTO << "  |";
         }
-        cout << "  " << i << " ";
+        //cout << "  " << i << " ";
 
         cout << endl;
     }
     cout << "-------------------------------------------------\n";
     cout << "   ";
-    for (int i = 1; i < COLONNE + 1; i++) // Scorro l'indice delle COLONNE
+    for (int i = 1; i < COLONNE + 1; i++) // Scorro l'indice delle colonne
     {
-        cout << i << "      "; // Stampo l'indice delle COLONNE
-    }
-}
-
-// Inizializzo la matrice
-void inizializzoTabella(char matrice[RIGHE][COLONNE])
-{
-    for(int i = 0; i < RIGHE; i++)
-    {
-        for(int j = 0; j < COLONNE; j++)
-        {
-            matrice[i][j] = VUOTO;
-        }
+        cout << i << "      "; // Stampo l'indice delle colonne
     }
 }
 
@@ -302,7 +284,6 @@ void stampaRigaPiena(char matrice[RIGHE][COLONNE], int riga, int colonna, int co
 
 int main()
 { 
-    // Inizializzo variabili
     char matrice[RIGHE][COLONNE]; 
     char tipoGioco = ' ';
     string nome1 = " ";

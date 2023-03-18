@@ -1,8 +1,10 @@
-# project_astroit
-===Progetto For(za4)===
+# <img height="40" src="/home/guea/Documenti/FORZA4/forza4.jpeg" width="40"/>PROGETTO FORZA 4
+# 
+# VI DIAMO IL BENVENUTO NELLA NOSTRA PAGINA DI PRESENTAZIONE DEL PROGETTO FORZA 4
 
+![forza4.jpeg](forza4.jpeg)
 
-# Introduzione
+# INTRODUZIONE
 
 Questo progetto viene realizzato per il corso di ingegneria del software della società ASTROIT.
 Il progetto consiste nella creazione del gioco "Forza 4", nel quale sarà possibile giocare in locale o in rete.
@@ -75,7 +77,22 @@ Il gioco termina automaticamente (il programma effetua il controllo) quando uno 
 
 |  X  ||  O  ||  O  ||  X  ||  -  ||  -  ||  -  |
 -------------------------------------------------
-   1      2      3      4      5      6      7   
+   1      2      3      4      5      6   7
 
-                     Grazie per aver scaricato questo progetto. 
-                                Buon divertimento a presto.
+
+# <img height="30" src="/home/guea/Documenti/FORZA4/forza4.jpeg" width="30"/>COME GIOCARE AL FORZA 4
+
+Per giocare bisogna scaricare il file "forza4.exe" e lanciarlo.
+Il gioco è in italiano e si gioca in locale o in rete.
+Per giocare in locale bisogna inserire il nome dei due giocatori e premere "OK".
+Per giocare in rete bisogna inserire il nome del giocatore e premere "OK".
+In seguito bisogna inserire l'indirizzo IP del giocatore con cui si vuole giocare e premere "OK".
+Il giocatore che ha inserito l'indirizzo IP deve premere "OK" per avviare la partita.
+
+
+                          Grazie per aver scaricato questo progetto.
+                                  Buon divertimento a presto.
+                 
+
+              
+                               

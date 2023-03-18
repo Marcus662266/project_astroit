@@ -1,4 +1,4 @@
-# <img height="40" src="/home/guea/Documenti/FORZA4/forza4.jpeg" width="40"/>PROGETTO FORZA 4
+# <img height="40" src="/home/guea/CLionProjects/project_astroit1/forza4.jpeg" width="40"/>PROGETTO FORZA 4
 # 
 # VI DIAMO IL BENVENUTO NELLA NOSTRA PAGINA DI PRESENTAZIONE DEL PROGETTO FORZA 4
 
@@ -80,7 +80,7 @@ Il gioco termina automaticamente (il programma effetua il controllo) quando uno 
    1      2      3      4      5      6   7
 
 
-# <img height="30" src="/home/guea/Documenti/FORZA4/forza4.jpeg" width="30"/>COME GIOCARE AL FORZA 4
+# <img height="30" src="/home/guea/CLionProjects/project_astroit1/forza4.jpeg" width="30"/>COME GIOCARE AL FORZA 4
 
 Per giocare bisogna scaricare il file "forza4.exe" e lanciarlo.
 Il gioco è in italiano e si gioca in locale o in rete.

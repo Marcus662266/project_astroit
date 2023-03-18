@@ -1,9 +1,12 @@
+// Includo le librerie che mi serviranno
 #include <iostream>
 #include <string>
 #include <random>
 #include <vector>
+
 using namespace std;
 
+// Inizializzo le "variabili" COSTANTI
 const char VUOTO = '-';
 const char NUMERO_GIOCATORI = 2;
 const int RIGHE = 6;
@@ -299,6 +302,7 @@ void stampaRigaPiena(char matrice[RIGHE][COLONNE], int riga, int colonna, int co
 
 int main()
 { 
+    // Inizializzo variabili
     char matrice[RIGHE][COLONNE]; 
     char tipoGioco = ' ';
     string nome1 = " ";

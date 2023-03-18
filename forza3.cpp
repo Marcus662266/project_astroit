@@ -295,75 +295,102 @@ int mossaPC (char matrice[RIGHE][COLONNE], char giocatore ,char tipoGiocatore , 
 
 };
 
-void gioca ( char matrice[RIGHE][COLONNE],char tipoGioco, string nome1,string nome2 ){ // Funzione che gestisce il gioco
-    char giocatore = 'X';
-    char tipoGiocatore1 = 'U';
-    char tipoGiocatore2 = 'U';
-    int colonna = 0;
-    int riga = 0;
-    int contatore = 0;
+
+// Funzione che controlla se c'è una vittoria
+int controlloVittoria (char *arr){
+     int combinazioni[8][4] =
+             {{0,1,2,3},
+              {1,2,3,4},
+              {2,3,4,5},
+              {3,4,5,6},
+              {7,8,9,10},
+              {8,9,10,11},
+              {9,10,11,12},
+              {10,11,12,13}
+             }; // Array che contiene le combinazioni vincenti
+    for (int i = 0; i < 8; i++) // Scorro l'indice delle combinazioni
+    {
+        if (arr[combinazioni[i][0]] == arr[combinazioni[i][1]] && arr[combinazioni[i][1]] == arr[combinazioni[i][2]] && arr[combinazioni[i][2]] == arr[combinazioni[i][3]] && arr[combinazioni[i][0]] != VUOTO) // Se le 4 celle sono uguali e diverse da vuoto
+        {
+            return 1; // Ritorno 1
+        }
+    }
+    return 0; // Ritorno 0
+}
+
+    // Funzione che controlla se c'è una vittoria
+   /* int contatore = 0;
     int vittoria = 0;
-    int turno = 0;
-    int mossa = 0;
-
-    if (tipoGioco == 'C') // Se il giocatore vuole giocare contro il computer
+// controllo orizzontale
+    for (int i = 0; i < RIGHE; i++) // Scorro l'indice delle righe
     {
-        tipoGiocatore2 = 'C';
-    }
-
-    while (vittoria == 0) // Finchè non c'è una vittoria
-    {
-        if (turno == 0) // Se è il turno del giocatore 1
+        for (int j = 0; j < COLONNE; j++) // Scorro l'indice delle colonne
         {
-            mossa = inserisciGettoni (matrice, giocatore, tipoGiocatore1, nome1);
-            if (mossa == 0) // Se la mossa non è valida
+            if (matrice [i][j] == giocatore) // Se la cella corrisponde al giocatore
             {
-                turno = 0;
+                contatore++; // Incremento il contatore
+                if (contatore == 4) // Se il contatore è uguale a 4
+                {
+                    vittoria = 1; // La vittoria è uguale a 1
+                    break;
+                }
             }
             else
             {
-                turno = 1;
+                contatore = 0; // Se la cella non corrisponde al giocatore il contatore è uguale a 0
             }
         }
-        else // Se è il turno del giocatore 2
+        contatore = 0; // Azzero il contatore
+    }
+    contatore = 0; // Azzero il contatore
+    // controllo verticale
+    for (int i = 0; i < COLONNE; i++) // Scorro l'indice delle colonne
+    {
+        for (int j = 0; j < RIGHE; j++) // Scorro l'indice delle righe
         {
-            mossa = inserisciGettoni (matrice, giocatore, tipoGiocatore2, nome2);
-            if (mossa == 0) // Se la mossa non è valida
+            if (matrice [j][i] == giocatore) // Se la cella corrisponde al giocatore
             {
-                turno = 1;
+                contatore++; // Incremento il contatore
+                if (contatore == 4) // Se il contatore è uguale a 4
+                {
+                    vittoria = 1; // La vittoria è uguale a 1
+                    break;
+                }
             }
             else
             {
-                turno = 0;
+                contatore = 0; // Se la cella non corrisponde al giocatore il contatore è uguale a 0
             }
         }
-        if (turno == 0) // Se è il turno del giocatore 1
-        {
-            giocatore = 'X';
-        }
-        else // Se è il turno del giocatore 2
-        {
-            giocatore = 'O';
-        }
-        // qui abbiamo un problema e dobbiamo risolverlo creando una funzione che controlla se la colonna è piena
-        vittoria = controlloVittoria (matrice, giocatore, riga, colonna, contatore); // Controllo se c'è una vittoria
+        contatore = 0; // Azzero il contatore
     }
-    if (vittoria == 1) // Se c'è una vittoria
+    contatore = 0; // Azzero il contatore
+
+    // controllo diagonale
+    for (int i = 0; i < RIGHE; i++) // Scorro l'indice delle righe
     {
-        if (turno == 0) // Se è il turno del giocatore 1
+        for (int j = 0; j < COLONNE; j++) // Scorro l'indice delle colonne
         {
-            cout << nome1 << " ha vinto!" << endl;
+            if (matrice [i][j] == giocatore) // Se la cella corrisponde al giocatore
+            {
+                contatore++; // Incremento il contatore
+                if (contatore == 4) // Se il contatore è uguale a 4
+                {
+                    vittoria = 1; // La vittoria è uguale a 1
+                    break;
+                }
+            }
+            else
+            {
+                contatore = 0; // Se la cella non corrisponde al giocatore il contatore è uguale a 0
+            }
         }
-        else // Se è il turno del giocatore 2
-        {
-            cout << nome2 << " ha vinto!" << endl;
-        }
+        contatore = 0; // Azzero il contatore
     }
-    else // Se c'è un pareggio
-    {
-        cout << "Pareggio!" << endl;
-    }
-};
+    contatore = 0; // Azzero il contatore
+    return vittoria;*/
+
+
 
  void stampaRigaPiena (char matrice[RIGHE][COLONNE], int riga, int colonna, int contatore){ // Funzione che stampa una riga piena
     for (int i = 0; i < COLONNE; i++) // Scorro l'indice delle colonne

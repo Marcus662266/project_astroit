@@ -99,3 +99,6 @@ int main()
     cout << giocatore1 << endl;
     inserisciTassello(griglia, 5);
 }
+
+
+

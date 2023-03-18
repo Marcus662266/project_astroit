@@ -295,7 +295,7 @@ int mossaPC (char matrice[RIGHE][COLONNE], char giocatore ,char tipoGiocatore , 
 
 };
 
-/*void gioca ( char matrice[RIGHE][COLONNE],char tipoGioco, string nome1,string nome2 ){ // Funzione che gestisce il gioco
+void gioca ( char matrice[RIGHE][COLONNE],char tipoGioco, string nome1,string nome2 ){ // Funzione che gestisce il gioco
     char giocatore = 'X';
     char tipoGiocatore1 = 'U';
     char tipoGiocatore2 = 'U';
@@ -363,7 +363,7 @@ int mossaPC (char matrice[RIGHE][COLONNE], char giocatore ,char tipoGiocatore , 
     {
         cout << "Pareggio!" << endl;
     }
-};*/
+};
 
  void stampaRigaPiena (char matrice[RIGHE][COLONNE], int riga, int colonna, int contatore){ // Funzione che stampa una riga piena
     for (int i = 0; i < COLONNE; i++) // Scorro l'indice delle colonne

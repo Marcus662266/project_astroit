@@ -9,8 +9,16 @@ using namespace std;
 const char VUOTO = '-';
 const int RIGHE = 6;
 const int COLONNE = 7;
+const char NUMERO_GIOCATORI = 2;
+const int GIOCATORE_1 = 0;
+const int GIOCATORE_2 = 1;
+const int COMPUTER = 2;
+const int GIOCATORE_1_VINCE = 1;
+const int GIOCATORE_2_VINCE = 2;
+const int PAREGGIO = 3;
+const int GIOCO_IN_CORSO = 4;
 
-void stampaLogo(void)
+void stampaTitolo(void)
 {
     cout << endl;
     cout << " ========================================================  \n";
@@ -25,22 +33,17 @@ void stampaLogo(void)
     cout << "                        Create by... Serge, Marco, Jacopo    ";
 }
 
-int main()
-{
-    stampaLogo();
-    char griglia[RIGHE][COLONNE]; // Inizializzo la griglia
 
-    // Stampo la griglia di gioco
+void stampaTabella( char matrice[RIGHE][COLONNE]){ // Funzione che stampa la tabella
     cout << endl;
     cout << endl;
-    cout << "-------------------------------------------------"<< endl;
-    
-    for (int i = 0; i < RIGHE; i++) 
+    cout << "-------------------------------------------------";
+    for (int i = 0; i < RIGHE; i++)
     {
         cout << endl;
-        for (int j = 0; j < COLONNE; j++)
+        for (int j = 0; j < COLONNE; j++) // Scorro l'indice delle colonne
         {
-            cout << griglia [i][j] << "|  " << VUOTO << "  |";
+            cout << matrice [i][j] << "|  " << VUOTO << "  |";
         }
         //cout << "  " << i << " ";
 
@@ -52,32 +55,43 @@ int main()
     {
         cout << i << "      "; // Stampo l'indice delle colonne
     }
-}
+};
+
+
+void inizializzaTabella(char matrice[RIGHE][COLONNE]){ // Funzione che inizializza la matrice
+    for (int i = 0; i < RIGHE; i++)  // Scorro l'indice delle righe
+    {
+        for (int j = 0; j < COLONNE; j++)// Scorro l'indice delle colonne
+        {
+            matrice [i][j] = VUOTO;
+        }
+    }
+};
 
 // Controlla se il giocatore ha vinto
 int xIsWinner(char matrice[RIGHE][COLONNE], char giocatore)
 {
     int contatore = 0;
-    for(int i = 0; i < RIGHE; i++)
+    for (int i = 0; i < RIGHE; i++)
     {
-        for(int j = 0; j < COLONNE; j++)
+        for (int j = 0; j < COLONNE; j++)
         {
-            if(matrice[i][j] == giocatore) // Controllo se nella cella ci sono 4 gettoni uguali
+            if (matrice[i][j] == giocatore) // Controllo se nella cella ci sono 4 gettoni uguali
             {
                 contatore++;
-                if(contatore == 4)
+                if (contatore == 4)
                 {
                     return 1;
                 }
-            }    
+            }
             else
             {
                 contatore = 0;
             }
         }
-            contatore = 0;
+        contatore = 0;
     }
-    return 0;   
+    return 0;
 }
 
 // Gestisco il turno dell'UTENTE
@@ -86,26 +100,26 @@ int giocatore(char matrice[RIGHE][COLONNE], char giocatore, char tipoGiocatore, 
     int riga = 0;
     int colonna = 0;
     int contatore = 0;
-    if(tipoGiocatore == 'U') // Se il giocatore è un UTENTE
+    if (tipoGiocatore == 'U') // Se il giocatore è un UTENTE
     {
         cout << "Inserisci il numero della colonna dove vuoi inserire il gettone: ";
         cin >> colonna;
         colonna--;
-        if(colonna < 0 || colonna < COLONNE - 1) // Controllo la validità della colonna inserita
+        if (colonna < 0 || colonna < COLONNE - 1) // Controllo la validità della colonna inserita
         {
             cout << "Colonna non valida, riprova. \n";
-            return 0; 
+            return 0;
         }
-        for(int i = RIGHE; i >= 0; i--) // Scorro le RIGHE al contrario
+        for (int i = RIGHE; i >= 0; i--) // Scorro le RIGHE al contrario
         {
-            if(matrice[i][colonna] == VUOTO)
+            if (matrice[i][colonna] == VUOTO)
             {
-                matrice[i][colonna] = giocatore;  // Inserisce il gettone nel primo spazio libero della colonna scelta
+                matrice[i][colonna] = giocatore; // Inserisce il gettone nel primo spazio libero della colonna scelta
                 riga = i;
                 break;
             }
         }
-        if(riga == 0)
+        if (riga == 0)
         {
             cout << "La colonna è piena, scegli un'altra colonna \n";
             return 0;
@@ -113,11 +127,11 @@ int giocatore(char matrice[RIGHE][COLONNE], char giocatore, char tipoGiocatore, 
     }
     else
     {
-        for(int i = RIGHE; i >= 0; i--) // Scorro le RIGHE
+        for (int i = RIGHE; i >= 0; i--) // Scorro le RIGHE
         {
-            for(int j = 0; j < COLONNE; j++)
+            for (int j = 0; j < COLONNE; j++)
             {
-                if(matrice[i][j] == VUOTO)
+                if (matrice[i][j] == VUOTO)
                 {
                     matrice[i][j] = giocatore; // Inserisce il gettone nel primo spazio libero della colonna scelta
                     riga = i;
@@ -126,12 +140,12 @@ int giocatore(char matrice[RIGHE][COLONNE], char giocatore, char tipoGiocatore, 
                     break;
                 }
             }
-            if(contatore == 1) // Una volta inserito il gettone esco dal ciclo
+            if (contatore == 1) // Una volta inserito il gettone esco dal ciclo
             {
-                break; 
+                break;
             }
         }
-        if( riga == 0)
+        if (riga == 0)
         {
             cout << "La colonna è piena, scegli un'altra colonna \n";
             return 0;
@@ -141,32 +155,94 @@ int giocatore(char matrice[RIGHE][COLONNE], char giocatore, char tipoGiocatore, 
     return 1;
 }
 
-// Gestisco il turno del COMPUTER
-int mossaPC(char matrice[RIGHE][COLONNE], char giocatore ,char tipoGiocatore , string nome)
-{
+// Gestisce inserimento dei gettoni
+int inserisciGettoni (char matrice[RIGHE][COLONNE], char giocatore ,char tipoGiocatore , string nome){ // Funzione che inserisce i gettoni nella tabella
     int riga = 0;
     int colonna = 0;
     int contatore = 0;
-    if(tipoGiocatore == 'U') // Se il giocatore è un UTENTE
+
+    if (tipoGiocatore == 'U') // Se il giocatore è umano
     {
-        cout << "Inserisci il numero della colonna dove vuoi inserire il gettone: ";
+        cout << "Inserisci la colonna dove vuoi inserire la pedina: ";
         cin >> colonna;
         colonna--;
-        if(colonna < 0 || colonna < COLONNE - 1) // Controllo la validità della colonna inserita
+        if (colonna < 0 || colonna > COLONNE - 1) // Controllo che la colonna inserita sia valida
         {
-            cout << "Colonna non valida, riprova. \n";
-            return 0; 
+            cout << "Colonna non valida, riprova" << endl;
+            return 0;
         }
-        for(int i = RIGHE; i >= 0; i--) // Scorro le RIGHE al contrario
+        for (int i = RIGHE - 1; i >= 0; i--) // Scorro l'indice delle righe
         {
-            if(matrice[i][colonna] == VUOTO)
+            if (matrice [i][colonna] == VUOTO)
             {
-                matrice[i][colonna] = giocatore;  // Inserisce il gettone nel primo spazio libero della colonna scelta
+                matrice [i][colonna] = giocatore; // Inserisco il gettone nella cella vuota
                 riga = i;
                 break;
             }
         }
-        if(riga == 0)
+        if (riga == 0)
+        {
+            cout << "Colonna piena, riprova" << endl;
+            return 0;
+        }
+    }
+    else
+    {
+        for (int i = RIGHE - 1; i >= 0; i--) // Scorro l'indice delle righe
+        {
+            for (int j = 0; j < COLONNE; j++)// Scorro l'indice delle colonne
+            {
+                if (matrice [i][j] == VUOTO)
+                {
+                    matrice [i][j] = giocatore; // Inserisco il gettone nella cella vuota
+                    riga = i;
+                    colonna = j;
+                    contatore++;
+                    break;
+                }
+            }
+            if (contatore == 1) // Se ho trovato una cella vuota esco dal ciclo
+            {
+                break;
+            }
+        }
+        if (riga == 0)
+        {
+            cout << "Colonna piena, riprova" << endl;
+            return 0;
+        }
+        cout << nome << " ha inserito la pedina nella colonna " << colonna + 1 << endl;
+    }
+    return 1;
+
+};
+
+// Gestisco il turno del COMPUTER
+int mossaPC(char matrice[RIGHE][COLONNE], char giocatore, char tipoGiocatore, string nome)
+{
+    int riga = 0;
+    int colonna = 0;
+    int contatore = 0;
+    if (tipoGiocatore == 'U') // Se il giocatore è un UTENTE
+    {
+        cout << "Inserisci il numero della colonna dove vuoi inserire il gettone: ";
+        cin >> colonna;
+        colonna--;
+        if (colonna < 0 || colonna < COLONNE - 1) // Controllo la validità della colonna inserita
+        {
+            cout << "Colonna non valida, riprova. \n";
+            return 0;
+        }
+        for (int i = RIGHE; i >= 0; i--) // Scorro le RIGHE al contrario
+        {
+            if (matrice[i][colonna] == VUOTO)
+            {
+                matrice[i][colonna] = giocatore; // Inserisce il gettone nel primo spazio libero della colonna scelta
+                riga = i;
+                break;
+            }
+        }
+        if (riga == 0)
         {
             cout << "La colonna è piena, scegli un'altra colonna \n";
             return 0;
@@ -174,11 +250,11 @@ int mossaPC(char matrice[RIGHE][COLONNE], char giocatore ,char tipoGiocatore , s
     }
     else
     {
-        for(int i = RIGHE; i >= 0; i--) // Scorro le Righe
+        for (int i = RIGHE; i >= 0; i--) // Scorro le Righe
         {
-            for(int j = 0; j < COLONNE; j++)
+            for (int j = 0; j < COLONNE; j++)
             {
-                if(matrice[i][j] == VUOTO)
+                if (matrice[i][j] == VUOTO)
                 {
                     matrice[i][j] = giocatore; // Inserisce il gettone nel primo spazio libero della colonna scelta
                     riga = i;
@@ -187,12 +263,12 @@ int mossaPC(char matrice[RIGHE][COLONNE], char giocatore ,char tipoGiocatore , s
                     break;
                 }
             }
-            if(contatore == 1) // Una volta inserito il gettone esco dal ciclo
+            if (contatore == 1) // Una volta inserito il gettone esco dal ciclo
             {
-                break; 
+                break;
             }
         }
-        if( riga == 0)
+        if (riga == 0)
         {
             cout << "La colonna è piena, scegli un'altra colonna \n";
             return 0;
@@ -277,14 +353,14 @@ void stampaRigaPiena(char matrice[RIGHE][COLONNE], int riga, int colonna, int co
 {
     for (int i = 0; i < COLONNE; i++) // Scorro l'indice delle COLONNE
     {
-        cout << matrice [riga][i] << " ";
+        cout << matrice[riga][i] << " ";
     }
     cout << endl;
 }
 
 int main()
-{ 
-    char matrice[RIGHE][COLONNE]; 
+{
+    char matrice[RIGHE][COLONNE];
     char tipoGioco = ' ';
     string nome1 = " ";
     string nome2 = " ";
@@ -293,14 +369,14 @@ int main()
     int riga = 0;
     int colonna = 0;
     int vittoria = 0;
-    
+
     stampaTitolo();
     cout << endl;
     cout << "Benvenuto e preparati a giocare a FORZA 4! \n";
     cout << endl;
     cout << "Se vuoi giocare contro il COMPUTER premi 1.\n";
     cout << "Se vuoi giocare contro un UTENTE premi 2.\n";
-    cin >> scelta; 
+    cin >> scelta;
     if (scelta == 1) // Se il giocatore vuole giocare contro il COMPUTER
     {
         tipoGioco = 'C';

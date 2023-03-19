@@ -234,65 +234,8 @@ int inserisciGettoni (char matrice[RIGHE][COLONNE], char giocatore ,char tipoGio
 
 };
 
-int mossaPC (char matrice[RIGHE][COLONNE], char giocatore ,char tipoGiocatore , string nome){ // Funzione che gestisce il turno del PC
-    int riga = 0;
-    int colonna = 0;
-    int contatore = 0;
-
-    if (tipoGiocatore == 'U') // Se il giocatore è umano
-    {
-        cout << "Inserisci la colonna dove vuoi inserire la pedina: ";
-        cin >> colonna;
-        colonna--;
-        if (colonna < 0 || colonna > COLONNE - 1) // Controllo che la colonna inserita sia valida
-        {
-            cout << "Colonna non valida, riprova" << endl;
-            return 0;
-        }
-        for (int i = RIGHE - 1; i >= 0; i--) // Scorro l'indice delle righe
-        {
-            if (matrice [i][colonna] == VUOTO)
-            {
-                matrice [i][colonna] = giocatore; // Inserisco il gettone nella cella vuota
-                riga = i;
-                break;
-            }
-        }
-        if (riga == 0)
-        {
-            cout << "Colonna piena, riprova" << endl;
-            return 0;
-        }
-    }
-    else
-    {
-        for (int i = RIGHE - 1; i >= 0; i--) // Scorro l'indice delle righe
-        {
-            for (int j = 0; j < COLONNE; j++)// Scorro l'indice delle colonne
-            {
-                if (matrice [i][j] == VUOTO)
-                {
-                    matrice [i][j] = giocatore; // Inserisco il gettone nella cella vuota
-                    riga = i;
-                    colonna = j;
-                    contatore++;
-                    break;
-                }
-            }
-            if (contatore == 1) // Se ho trovato una cella vuota esco dal ciclo
-            {
-                break;
-            }
-        }
-        if (riga == 0)
-        {
-            cout << "Colonna piena, riprova" << endl;
-            return 0;
-        }
-        cout << nome << " ha inserito la pedina nella colonna " << colonna + 1 << endl;
-    }
-    return 1;
-
+int mossaPC (char *arr){// Funzione che gestisce il turno del PC
+    
 };
 
 
@@ -389,9 +332,7 @@ int controlloVittoria (char *arr){
     }
     contatore = 0; // Azzero il contatore
     return vittoria;*/
-
-
-
+   
  void stampaRigaPiena (char matrice[RIGHE][COLONNE], int riga, int colonna, int contatore){ // Funzione che stampa una riga piena
     for (int i = 0; i < COLONNE; i++) // Scorro l'indice delle colonne
     {

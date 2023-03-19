@@ -1,6 +1,3 @@
-//
-// Created by guea on 17.03.23.
-//
 
 /*PROJECT FORZA 4: Il progetto consiste nella creazione del gioco "Forza 4", nel quale sarà possibile giocare in locale o in rete.
 Si suppone di avere 2 giocatori identificati dal loro nome o da un "personaggio". L'obiettivo di ogni giocatore è quello di mettere
@@ -50,7 +47,7 @@ void stampaTitolo(void){
     cout << "|  /  /     / /__/ / /  / | | /  /___ /  / |  | /____  | | \n";
     cout << "| /__/     /______/ /__/  |_|/______//__/  |__|      |_| | \n";
     cout << " ========================================================  \n";
-    cout << "                        Create by... Serge, Marco, Jacopo    ";
+    cout << "                        Create by... Serge, Marco, Jacopo   \n";
 
 };
 
@@ -76,7 +73,15 @@ void stampaTabella( char matrice[RIGHE][COLONNE]){ // Funzione che stampa la tab
         cout << i << "      "; // Stampo l'indice delle colonne
     }
 };
+void stampaMenu(void){ // Funzione che stampa il menu
+    cout << endl;
+    cout << " ========================================================  \n";
+    cout << "| 1. Player vs Player                                     | \n";
+    cout << "| 2. Player vs Computer                                   | \n";
+    cout << "| 3. Computer vs Computer                                 | \n";
+    cout << " ========================================================  \n";
 
+};
 void inizializzaTabella(char matrice[RIGHE][COLONNE]){ // Funzione che inizializza la matrice
     for (int i = 0; i < RIGHE; i++)  // Scorro l'indice delle righe
     {
@@ -86,7 +91,36 @@ void inizializzaTabella(char matrice[RIGHE][COLONNE]){ // Funzione che inizializ
         }
     }
 };
-
+void stampMatrice(char matrice[RIGHE][COLONNE]){ // Funzione che stampa la matrice
+    for (int i = 0; i < RIGHE; i++)  // Scorro l'indice delle righe
+    {
+        for (int j = 0; j < COLONNE; j++)// Scorro l'indice delle colonne
+        {
+            cout << matrice [i][j] << " ";
+        }
+        cout << endl;
+    }
+};
+int inizializzaMatrice(char matrice[RIGHE][COLONNE]){ // Funzione che inizializza la matrice
+    for (int i = 0; i < RIGHE; i++)  // Scorro l'indice delle righe
+    {
+        for (int j = 0; j < COLONNE; j++)// Scorro l'indice delle colonne
+        {
+            matrice [i][j] = VUOTO;
+        }
+    }
+    return 0;
+};
+int inizializzaGiocatori(char giocatore[NUMERO_GIOCATORI]){ // Funzione che inizializza i giocatori
+    giocatore [GIOCATORE_1] = 'X';
+    giocatore [GIOCATORE_2] = 'O';
+    return 0;
+};
+int inizializzaGettone(char gettone[NUMERO_GIOCATORI]){ // Funzione che inizializza le gettoni
+    gettone [GIOCATORE_1] = 'X';
+    gettone [GIOCATORE_2] = 'O';
+    return 0;
+};
 int xisWinner (char matrice[RIGHE][COLONNE], char giocatore){ // Funzione che controlla se il giocatore ha vinto
     int contatore = 0;
     for (int i = 0; i < RIGHE; i++)
@@ -110,7 +144,6 @@ int xisWinner (char matrice[RIGHE][COLONNE], char giocatore){ // Funzione che co
     }
     return 0;
 };
-
 int giocatore (char matrice[RIGHE][COLONNE], char giocatore ,char tipoGiocatore , string nome){ // Funzione che gestisce il turno del giocatore
 
     int riga = 0;
@@ -172,7 +205,6 @@ int giocatore (char matrice[RIGHE][COLONNE], char giocatore ,char tipoGiocatore 
     return 1;
 
 }
-
 int inserisciGettoni (char matrice[RIGHE][COLONNE], char giocatore ,char tipoGiocatore , string nome){ // Funzione che inserisce i gettoni nella tabella
     int riga = 0;
     int colonna = 0;
@@ -233,154 +265,92 @@ int inserisciGettoni (char matrice[RIGHE][COLONNE], char giocatore ,char tipoGio
     return 1;
 
 };
-
 int mossaPC (char *arr){// Funzione che gestisce il turno del PC
-    
+    int colonna = 0;
+    int riga = 0;
+    int contatore = 0;
+    for (int i = RIGHE - 1; i >= 0; i--) // Scorro l'indice delle righe
+    {
+        for (int j = 0; j < COLONNE; j++) // Scorro l'indice delle colonne
+        {
+            if (arr [i * COLONNE + j] == VUOTO) // Controllo se la cella è vuota
+            {
+                arr [i * COLONNE + j] = 'O'; // Inserisco il gettone nella cella vuota
+                riga = i;
+                colonna = j;
+                contatore++;
+                break;
+            }
+        }
+        if (contatore == 1) // Se ho trovato una cella vuota esco dal ciclo
+        {
+            break;
+        }
+    }
+    if (riga == 0)
+    {
+        cout << "Colonna piena, riprova" << endl;
+        return 0;
+    }
+    cout << "Il PC ha inserito la pedina nella colonna " << colonna + 1 << endl;
+    return 1;
 };
-
-
-// Funzione che controlla se c'è una vittoria
-int controlloVittoria (char *arr){
-     int combinazioni[8][4] =
-             {{0,1,2,3},
-              {1,2,3,4},
-              {2,3,4,5},
-              {3,4,5,6},
-              {7,8,9,10},
-              {8,9,10,11},
-              {9,10,11,12},
-              {10,11,12,13}
-             }; // Array che contiene le combinazioni vincenti
-    for (int i = 0; i < 8; i++) // Scorro l'indice delle combinazioni
-    {
-        if (arr[combinazioni[i][0]] == arr[combinazioni[i][1]] && arr[combinazioni[i][1]] == arr[combinazioni[i][2]] && arr[combinazioni[i][2]] == arr[combinazioni[i][3]] && arr[combinazioni[i][0]] != VUOTO) // Se le 4 celle sono uguali e diverse da vuoto
-        {
-            return 1; // Ritorno 1
-        }
-    }
-    return 0; // Ritorno 0
-}
-
-    // Funzione che controlla se c'è una vittoria
-   /* int contatore = 0;
-    int vittoria = 0;
-// controllo orizzontale
-    for (int i = 0; i < RIGHE; i++) // Scorro l'indice delle righe
-    {
-        for (int j = 0; j < COLONNE; j++) // Scorro l'indice delle colonne
-        {
-            if (matrice [i][j] == giocatore) // Se la cella corrisponde al giocatore
-            {
-                contatore++; // Incremento il contatore
-                if (contatore == 4) // Se il contatore è uguale a 4
-                {
-                    vittoria = 1; // La vittoria è uguale a 1
-                    break;
-                }
-            }
-            else
-            {
-                contatore = 0; // Se la cella non corrisponde al giocatore il contatore è uguale a 0
-            }
-        }
-        contatore = 0; // Azzero il contatore
-    }
-    contatore = 0; // Azzero il contatore
-    // controllo verticale
-    for (int i = 0; i < COLONNE; i++) // Scorro l'indice delle colonne
-    {
-        for (int j = 0; j < RIGHE; j++) // Scorro l'indice delle righe
-        {
-            if (matrice [j][i] == giocatore) // Se la cella corrisponde al giocatore
-            {
-                contatore++; // Incremento il contatore
-                if (contatore == 4) // Se il contatore è uguale a 4
-                {
-                    vittoria = 1; // La vittoria è uguale a 1
-                    break;
-                }
-            }
-            else
-            {
-                contatore = 0; // Se la cella non corrisponde al giocatore il contatore è uguale a 0
-            }
-        }
-        contatore = 0; // Azzero il contatore
-    }
-    contatore = 0; // Azzero il contatore
-
-    // controllo diagonale
-    for (int i = 0; i < RIGHE; i++) // Scorro l'indice delle righe
-    {
-        for (int j = 0; j < COLONNE; j++) // Scorro l'indice delle colonne
-        {
-            if (matrice [i][j] == giocatore) // Se la cella corrisponde al giocatore
-            {
-                contatore++; // Incremento il contatore
-                if (contatore == 4) // Se il contatore è uguale a 4
-                {
-                    vittoria = 1; // La vittoria è uguale a 1
-                    break;
-                }
-            }
-            else
-            {
-                contatore = 0; // Se la cella non corrisponde al giocatore il contatore è uguale a 0
-            }
-        }
-        contatore = 0; // Azzero il contatore
-    }
-    contatore = 0; // Azzero il contatore
-    return vittoria;*/
-   
- void stampaRigaPiena (char matrice[RIGHE][COLONNE], int riga, int colonna, int contatore){ // Funzione che stampa una riga piena
+/*void stampaRigaPiena (char matrice[RIGHE][COLONNE], int riga, int colonna, int contatore){ // Funzione che stampa una riga piena
     for (int i = 0; i < COLONNE; i++) // Scorro l'indice delle colonne
     {
         cout << matrice [riga][i] << " ";
     }
     cout << endl;
-};
+};*/
 
 
-int main(){
+int main() {
+    stampaTitolo();
+    stampaMenu();
     char matrice[RIGHE][COLONNE];
-    char tipoGioco = ' ';
-    string nome1 = " ";
-    string nome2 = " ";
+    char arr[RIGHE * COLONNE];
+    char giocatore = 'X';
+    char tipoGiocatore = 'U';
+    string nome = "Giocatore";
     int scelta = 0;
     int contatore = 0;
     int riga = 0;
     int colonna = 0;
     int vittoria = 0;
+    int vittoriaPC = 0;
+    int vittoriaGiocatore = 0;
+    int vittoriaPareggio = 0;
 
-    cout << "Benvenuto nel gioco del Forza 4!" << endl;
-    cout << "Vuoi giocare contro il computer o contro un altro giocatore?" << endl;
-    cout << "Premi 1 per giocare contro il computer, premi 2 per giocare contro un altro giocatore: ";
+    cout << " Benvenuto e preparati a giocare a forza 4! " << endl;
+    cout << endl;
+    cout << "se vuoi giocare contro il pc digita 1." << endl;
+    cout << " se vuoi giocare contro un altro giocatore digita 2" << endl;
     cin >> scelta;
-    if (scelta == 1) // Se il giocatore vuole giocare contro il computer
-    {
-        tipoGioco = 'C';
+
+    if (scelta == 1) {
+        cout << "hai scelto di giocare contro il pc" << endl;
+        cout << "inserisci il tuo nome" << endl;
+        cin >> nome;
+        cout << "inserisci il tuo simbolo" << endl;
+        cin >> giocatore;
+        tipoGiocatore = 'U';
+        cout << "inserisci il simbolo del pc" << endl;
+
+
+    } else if (scelta == 2) {
+        cout << "hai scelto di giocare contro un altro giocatore" << endl;
+        cout << "inserisci il nome del primo giocatore" << endl;
+        cin >> nome;
+        cout << "inserisci il simbolo del primo giocatore" << endl;
+        cin >> giocatore;
+        tipoGiocatore = 'U';
+        cout << "inserisci il nome del secondo giocatore" << endl;
+        cin >> nome;
+        cout << "inserisci il simbolo del secondo giocatore" << endl;
+        cin >> giocatore;
+        tipoGiocatore = 'U';
+    } else {
+        cout << "scelta non valida" << endl;
+        return 0;
     }
-    else // Se il giocatore vuole giocare contro un altro giocatore
-    {
-        tipoGioco = 'U';
-    }
-    cout << "Inserisci il nome del primo giocatore: ";
-    cin >> nome1;
-    if (tipoGioco == 'C') // Se il giocatore vuole giocare contro il computer
-    {
-        nome2 = "Computer";
-    }
-    else // Se il giocatore vuole giocare contro un altro giocatore
-    {
-        cout << "Inserisci il nome del secondo giocatore: ";
-        cin >> nome2;
-    }
-    // da finire dopo
 }
-
-
-
-
-
-

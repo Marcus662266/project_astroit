@@ -282,8 +282,6 @@ int mossaPC(char matrice[RIGHE][COLONNE], char giocatore, char tipoGiocatore, st
     return 1;
 }
 
-// Gestisco il gioco
-
 // Stampo una riga piena
 void stampaRigaPiena(char matrice[RIGHE][COLONNE], int riga, int colonna, int contatore)
 {
@@ -292,6 +290,65 @@ void stampaRigaPiena(char matrice[RIGHE][COLONNE], int riga, int colonna, int co
         cout << matrice[riga][i] << " ";
     }
     cout << endl;
+}
+
+//
+int controlloVittoria(char matrice[RIGHE][COLONNE], char giocatore, int riga, int colonna, int contatore)
+{
+    // Controllo se c'è una vittoria orizzontale
+    for (int i = 0; i < COLONNE; i++) // Scorro l'indice delle COLONNE
+    {
+        if (matrice[riga][i] == giocatore) // Se il gettone è uguale al giocatore
+        {
+            contatore++;
+        }
+        else
+        {
+            contatore = 0;
+        }
+        if (contatore == 4) // Se il contatore è uguale a 4
+        {
+            return 1;
+        }
+    }
+    contatore = 0;
+    // Controllo se c'è una vittoria verticale
+    for (int i = 0; i < RIGHE; i++) // Scorro l'indice delle RIGHE
+    {
+        if (matrice[i][colonna] == giocatore) // Se il gettone è uguale al giocatore
+        {
+            contatore++;
+        }
+        else
+        {
+            contatore = 0;
+        }
+        if (contatore == 4) // Se il contatore è uguale a 4
+        {
+            return 1;
+        }
+    }
+    contatore = 0;
+    // Controllo se c'è una vittoria diagonale
+    for (int i = 0; i < RIGHE; i++) // Scorro l'indice delle RIGHE
+    {
+        for (int j = 0; j < COLONNE; j++) // Scorro l'indice delle COLONNE
+        {
+            if (matrice[i][j] == giocatore) // Se il gettone è uguale al giocatore
+            {
+                if (matrice[i + 1][j + 1] == giocatore) // Se il gettone è uguale al giocatore
+                {
+                    if (matrice[i + 2][j + 2] == giocatore) // Se il gettone è uguale al giocatore
+                    {
+                        if (matrice[i + 3][j + 3] == giocatore) // Se il gettone è uguale al giocatore
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 int main()
@@ -313,16 +370,13 @@ int main()
     cout << "Se vuoi giocare contro il COMPUTER premi 1.\n";
     cout << "Se vuoi giocare contro un UTENTE premi 2.\n";
     cin >> scelta;
-    if (scelta == 1)
+    if (scelta == 1) // Se il giocatore vuole giocare contro il COMPUTER
     {
         tipoGioco = 'C';
-        cout << "Inserisci il tuo nome: ";
-        cin >> nome1;
-        nome2 = "Computer";
     }
-    else
+    else // Se il giocatore vuole giocare contro un UTENTE
     {
-        tipoGioco = 'U';
+        tipoGioco = 'U'; 
     }
     cout << "Inserisci il nome del primo giocatore: ";
     cin >> nome1;
@@ -335,5 +389,33 @@ int main()
         cout << "Inserisci il nome del secondo giocatore: ";
         cin >> nome2;
     }
-    // da finire dopo
+    cout << endl;
+    cout << "Ora iniziamo a giocare! \n";
+    cout << endl;
+    
+    stampaTabella(matrice);
+    inizializzaTabella(matrice); 
+
+    while (vittoria == 0) // Finchè non c'è una vittoria
+    {
+        if (contatore % 2 == 0) // Se è il turno del giocatore 1
+        {
+            inserisciGettoni(matrice, 'X', 'U', nome1);
+        }
+        else // Se è il turno del giocatore 2
+        {
+            inserisciGettoni(matrice, 'O', tipoGioco, nome2);
+        }
+        contatore++;
+
+        vittoria = controlloVittoria(matrice, 'X', riga, colonna, contatore); // Controllo se c'è una vittoria
+        if (vittoria == 1)                                                    // Se c'è una vittoria                                                   // Se c'è una vittoria
+        {
+            cout << nome1 << " ha vinto!" << endl;
+        }
+        else // Se c'è un pareggio
+        {
+            cout << "Pareggio!" << endl;
+        }
+    }
 }

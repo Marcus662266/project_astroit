@@ -170,3 +170,75 @@ int main() {
         return 0;
     }
 }
+
+
+/* int mossaPC(char matrice[RIGHE][COLONNE], char giocatore, char tipoGiocatore, string nome)
+{
+    int riga = 0;
+    int colonna = 0;
+    int contatore = 0;
+    if (tipoGiocatore == 'U') // Se il giocatore è un UTENTE
+    {
+        cout << "Inserisci il numero della colonna dove vuoi inserire il gettone: ";
+        cin >> colonna;
+        colonna--;
+        if (colonna < 0 || colonna < COLONNE - 1) // Controllo la validità della colonna inserita
+        {
+            cout << "Colonna non valida, riprova. \n";
+            return 0;
+        }
+        for (int i = RIGHE; i >= 0; i--) // Scorro le RIGHE al contrario
+        {
+            if (matrice[i][colonna] == VUOTO)
+            {
+                matrice[i][colonna] = giocatore; // Inserisce il gettone nel primo spazio libero della colonna scelta
+                riga = i;
+                break;
+            }
+        }
+        if (riga == 0)
+        {
+            cout << "La colonna è piena, scegli un'altra colonna \n";
+            return 0;
+        }
+    }
+    else
+    {
+        for (int i = RIGHE; i >= 0; i--) // Scorro le Righe
+        {
+            for (int j = 0; j < COLONNE; j++)
+            {
+                if (matrice[i][j] == VUOTO)
+                {
+                    matrice[i][j] = giocatore; // Inserisce il gettone nel primo spazio libero della colonna scelta
+                    riga = i;
+                    colonna = j;
+                    contatore++;
+                    break;
+                }
+            }
+            if (contatore == 1) // Una volta inserito il gettone esco dal ciclo
+            {
+                break;
+            }
+        }
+        if (riga == 0)
+        {
+            cout << "La colonna è piena, scegli un'altra colonna \n";
+            return 0;
+        }
+        cout << nome << " ha inserito il gettone nella colonna " << colonna + 1 << endl;
+    }
+    return 1;
+}
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ */

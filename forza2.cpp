@@ -259,5 +259,6 @@ int main()
     string giocatore1 = stampaGiocatore("giocatore1");
     string giocatore2 = stampaGiocatore("giocatore2");
     cout << giocatore1 << endl;
-    inserisciTassello(griglia);
+    inserisciTassello(griglia, 5);
 }
+

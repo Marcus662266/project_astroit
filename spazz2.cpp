@@ -13,6 +13,22 @@ void init_board() {
         }
     }
 }
+// Stampa il titolo del programma
+void stampaTitolo(void)
+{
+    cout << endl;
+    cout << " ========================================================  \n";
+    cout << "| READY TO PLAY...                                       | \n";
+    cout << "|      _______  _______  ____________     ____      ___  | \n";
+    cout << "|     /  ____/ / ___  / / __  /__   /    /    |    /   | | \n";
+    cout << "|    /  /___  / /  / / / /_/ /  /  /    /     |   / /| | | \n";
+    cout << "|   /  ____/ / /  / / /  _  /  /  /    /  /|  |  / /_| | | \n";
+    cout << "|  /  /     / /__/ / /  / | | /  /___ /  / |  | /____  | | \n";
+    cout << "| /__/     /______/ /__/  |_|/______//__/  |__|      |_| | \n";
+    cout << " ========================================================  \n";
+    cout << "                        Create by... Serge, Marco, Jacopo  \n";
+}
+
 
 // visualizza la matrice di gioco
 void display_board() {
@@ -69,75 +85,69 @@ void play_game() {
         }
     }
 }
+int xisWinner (char matrice[ROWS][COLS], char player) {
 
-int main() {
+    // controllo orizzontale
+    for (int i = 0; i < ROWS; i++) {
+        for (int j = 0; j < COLS - 3; j++) {
+            if (matrice[i][j] == player && matrice[i][j + 1] == player && matrice[i][j + 2] == player &&
+                matrice[i][j + 3] == player) {
+                return 1;
+            }
+        }
+    }
+
+    // controllo verticale
+    for (int i = 0; i < ROWS - 3; i++) {
+        for (int j = 0; j < COLS; j++) {
+            if (matrice[i][j] == player && matrice[i + 1][j] == player && matrice[i + 2][j] == player &&
+                matrice[i + 3][j] == player) {
+                return 1;
+            }
+        }
+    }
+
+    // controllo diagonale
+    for (int i = 0; i < ROWS - 3; i++) {
+        for (int j = 0; j < COLS - 3; j++) {
+            if (matrice[i][j] == player && matrice[i + 1][j + 1] == player && matrice[i + 2][j + 2] == player &&
+                matrice[i + 3][j + 3] == player) {
+                return 1;
+            }
+        }
+    }
+
+    // controllo diagonale inversa
+    for (int i = 3; i < ROWS; i++) {
+        for (int j = 0; j < COLS - 3; j++) {
+            if (matrice[i][j] == player && matrice[i - 1][j + 1] == player && matrice[i - 2][j + 2] == player &&
+                matrice[i - 3][j + 3] == player) {
+                return 1;
+            }
+        }
+    }
+
+    return 0;
+}
+
+    int main() {
+
+    stampaTitolo();
     play_game();
     return 0;
-}
-// Stampa il titolo del programma
-void stampaTitolo(void)
-{
-    cout << endl;
-    cout << " ========================================================  \n";
-    cout << "| READY TO PLAY...                                       | \n";
-    cout << "|      _______  _______  ____________     ____      ___  | \n";
-    cout << "|     /  ____/ / ___  / / __  /__   /    /    |    /   | | \n";
-    cout << "|    /  /___  / /  / / / /_/ /  /  /    /     |   / /| | | \n";
-    cout << "|   /  ____/ / /  / / /  _  /  /  /    /  /|  |  / /_| | | \n";
-    cout << "|  /  /     / /__/ / /  / | | /  /___ /  / |  | /____  | | \n";
-    cout << "| /__/     /______/ /__/  |_|/______//__/  |__|      |_| | \n";
-    cout << " ========================================================  \n";
-    cout << "                        Create by... Serge, Marco, Jacopo  \n";
-}
-int xisWinner (char matrice[ROWS][COL], char player)
-{
-    // controllo orizzontale
-    for (int i = 0; i < ROWS; i++)
-    {
-        for (int j = 0; j < COL - 3; j++)
-        {
-            if (matrice[i][j] == player && matrice[i][j + 1] == player && matrice[i][j + 2] == player && matrice[i][j + 3] == player)
-            {
-                return 1;
-            }
+
+       /* int choice;
+        cout << "1. Gioca" << endl;
+        cout << "2. Esci" << endl;
+        cout << "Scelta: ";
+        cin >> choice;
+        if (choice == 2) {
+            return 0;
         }
-    }
- 
-    // controllo verticale
-    for (int i = 0; i < ROWS - 3; i++)
-    {
-        for (int j = 0; j < COL; j++)
-        {
-            if (matrice[i][j] == player && matrice[i + 1][j] == player && matrice[i + 2][j] == player && matrice[i + 3][j] == player)
-            {
-                return 1;
-            }
+        // continua a giocare
+        if (choice == 1) {
+            play_game();
         }
-    }
- 
-    // controllo diagonale
-    for (int i = 0; i < ROWS - 3; i++)
-    {
-        for (int j = 0; j < COL - 3; j++)
-        {
-            if (matrice[i][j] == player && matrice[i + 1][j + 1] == player && matrice[i + 2][j + 2] == player && matrice[i + 3][j + 3] == player)
-            {
-                return 1;
-            }
-        }
-    }
- 
-    // controllo diagonale inversa
-    for (int i = 3; i < ROWS; i++)
-    {
-        for (int j = 0; j < COL - 3; j++)
-        {
-            if (matrice[i][j] == player && matrice[i - 1][j + 1] == player && matrice[i - 2][j + 2] == player && matrice[i - 3][j + 3] == player)
-            {
-                return 1;
-            }
-        }
-    }
- 
-    return 0;
+        play_game();
+        return 0;*/
 }

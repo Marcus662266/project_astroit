@@ -89,27 +89,55 @@ void stampaTitolo(void)
     cout << " ========================================================  \n";
     cout << "                        Create by... Serge, Marco, Jacopo  \n";
 }
-int xisWinner (char matrice[ROWS][col], char player)
+int xisWinner (char matrice[ROWS][COL], char player)
 {
-    int contatore = 0;
+    // controllo orizzontale
     for (int i = 0; i < ROWS; i++)
     {
-        for (int j = 0; j < col; j++)
+        for (int j = 0; j < COL - 3; j++)
         {
-            if (matrice [i][j] == player) // Controllo se nella cella ci sono 4 pedine uguali
+            if (matrice[i][j] == player && matrice[i][j + 1] == player && matrice[i][j + 2] == player && matrice[i][j + 3] == player)
             {
-                contatore++;
-                if (contatore == 4)
-                {
-                    return 1;
-                }
-            }
-            else
-            {
-                contatore = 0;
+                return 1;
             }
         }
-        contatore = 0;
     }
+ 
+    // controllo verticale
+    for (int i = 0; i < ROWS - 3; i++)
+    {
+        for (int j = 0; j < COL; j++)
+        {
+            if (matrice[i][j] == player && matrice[i + 1][j] == player && matrice[i + 2][j] == player && matrice[i + 3][j] == player)
+            {
+                return 1;
+            }
+        }
+    }
+ 
+    // controllo diagonale
+    for (int i = 0; i < ROWS - 3; i++)
+    {
+        for (int j = 0; j < COL - 3; j++)
+        {
+            if (matrice[i][j] == player && matrice[i + 1][j + 1] == player && matrice[i + 2][j + 2] == player && matrice[i + 3][j + 3] == player)
+            {
+                return 1;
+            }
+        }
+    }
+ 
+    // controllo diagonale inversa
+    for (int i = 3; i < ROWS; i++)
+    {
+        for (int j = 0; j < COL - 3; j++)
+        {
+            if (matrice[i][j] == player && matrice[i - 1][j + 1] == player && matrice[i - 2][j + 2] == player && matrice[i - 3][j + 3] == player)
+            {
+                return 1;
+            }
+        }
+    }
+ 
     return 0;
 }

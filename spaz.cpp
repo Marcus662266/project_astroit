@@ -75,24 +75,24 @@ int inizializzaTabella(char matrice[ROWS][COLUMNS])
     }
     return 0;
 }
-/*vector<vector<int>> crea_tabellone() {
+vector<vector<int>> crea_tabellone() {
     vector<vector<int>> tabellone;
     for (int i = 0; i < ROWS; i++) {
         vector<int> row(COLUMNS, 0);
         tabellone.push_back(row);
     }
     return tabellone;
-}*/
+}
 
 // Funzione per stampare il tabellone
-/*void stampa_tabellone(vector<vector<int>> tabellone) {
+void stampa_tabellone(vector<vector<int>> tabellone) {
     for (int i = ROWS - 1; i >= 0; i--) {
         for (int j = 0; j < COLUMNS; j++) {
             cout << tabellone[i][j] << " ";
         }
         cout << endl;
     }
-}*/
+}
 
 // Funzione per inserire una fiches in una determinata colonna
 int inserisciFiches(char matrice[ROWS][COLUMNS], int colonna, char giocatore) {
@@ -158,17 +158,87 @@ int main() {
     char matrice[ROWS][COLUMNS];
     stampaLogo();
 
-    // vector<vector<int>> tabellone = crea_tabellone();
+    vector<vector<int>> tabellone = crea_tabellone();
     int turno = 1;
     int colonna;
-    while (true) {
-        stampaTabella(matrice);
-        cout << "Turno del giocatore " << turno << endl;
-        cout << "Inserisci la colonna: ";
-        cin >> colonna;
+    int giocatore;
+    int righe;
 
-        return 0;
-    }
+    
+
+    /*bool flag = true;
+    while (flag) {
+        stampaTabella(matrice);
+        stampa_tabellone(tabellone);
+        cout << endl;
+        cout << endl;
+        cout << "1. Creare un tabellone vuoto" << endl;
+        cout << "2. Creare un tabellone" << endl;
+        cout << "3. Inserire una fiches in una determinata colonna" << endl;
+        cout << "4. Controllare se una colonna è piena" << endl;
+        cout << "5. Controllare se un giocatore ha vinto" << endl;
+        cout << "6. Controllare se un giocatore ha vinto" << endl;
+        cout << "7. Controllare se un giocatore ha vinto" << endl;
+        cout << "8. Controllare se un giocatore ha vinto" << endl;
+
+        cout << endl;
+        cout << "Inserisci il numero di righe: ";
+        cin >> righe;
+        if (righe < 0 || righe >= ROWS) {
+            flag = false;
+        }
+        cout << endl;
+        cout << "Inserisci il numero di colonne: ";
+        cin >> colonna;
+        if (colonna < 0 || colonna >= COLUMNS) {
+            flag = false;
+        }
+        cout << endl;
+        cout << "Inserisci il numero di giocatore: ";
+        cin >> giocatore;
+        if (giocatore < 0 || giocatore >= COLUMNS) {
+            flag = false;
+        }
+        cout << endl;
+
+        if (turno == 1) {
+            if (inizializzaTabella(matrice) == -1) {
+                flag = false;
+            }
+        } else if (turno == 2) {
+            if (inizializzaTabella(matrice) == -1) {
+                flag = false;
+            }
+        } else if (turno == 3) {
+            if (inserisciFiches(matrice, colonna, giocatore) == -1) {
+                flag = false;
+            }
+        } else if (turno == 4) {
+            if (colonnaPiena(matrice, colonna) == false) {
+                flag = false;
+            }
+        } else if (turno == 5) {
+            if (xIsWinner(matrice, giocatore) == true) {
+                flag = false;
+            }
+        } else if (turno == 6) {
+            if (xIsWinner(matrice, giocatore) == true) {
+                flag = false;
+            }
+        } else if (turno == 7) {
+            if (xIsWinner(matrice, giocatore) == true) {
+                flag = false;
+            }
+        } else if (turno == 8) {
+            if (xIsWinner(matrice, giocatore) == true) {
+                flag = false;
+            }
+        
+        }
+         return 0;
+
+
+    }*/
 }
 
 

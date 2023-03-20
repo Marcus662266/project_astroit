@@ -51,7 +51,7 @@ void stampaTitolo(void)
 
 // Funzione che stampa la tabella
 void stampaTabella( char matrice[RIGHE][COLONNE])
-{ 
+{
     cout << endl;
     cout << endl;
     cout << "-------------------------------------------------";
@@ -74,7 +74,7 @@ void stampaTabella( char matrice[RIGHE][COLONNE])
 
 // Funzione che stampa il menu
 void stampaMenu(void)
-{ 
+{
     cout << endl;
     cout << " =========================================================  \n";
     cout << "| 1. Player vs Player                                     | \n";
@@ -85,7 +85,7 @@ void stampaMenu(void)
 
 // Funzione che inizializza la matrice
 void inizializzaTabella(char matrice[RIGHE][COLONNE])
-{ 
+{
     for (int i = 0; i < RIGHE; i++)  // Scorro l'indice delle righe
     {
         for (int j = 0; j < COLONNE; j++)// Scorro l'indice delle colonne
@@ -97,7 +97,7 @@ void inizializzaTabella(char matrice[RIGHE][COLONNE])
 
 // Funzione che stampa la matrice
 void stampMatrice(char matrice[RIGHE][COLONNE])
-{ 
+{
     for (int i = 0; i < RIGHE; i++)  // Scorro l'indice delle righe
     {
         for (int j = 0; j < COLONNE; j++)// Scorro l'indice delle colonne
@@ -110,7 +110,7 @@ void stampMatrice(char matrice[RIGHE][COLONNE])
 
 // Funzione che inizializza la matrice
 int inizializzaMatrice(char matrice[RIGHE][COLONNE])
-{ 
+{
     for (int i = 0; i < RIGHE; i++)  // Scorro l'indice delle righe
     {
         for (int j = 0; j < COLONNE; j++)// Scorro l'indice delle colonne
@@ -123,7 +123,7 @@ int inizializzaMatrice(char matrice[RIGHE][COLONNE])
 
 // Funzione che inizializza i giocatori
 int inizializzaGiocatori(char giocatore[NUMERO_GIOCATORI])
-{ 
+{
     giocatore [GIOCATORE_1] = 'X';
     giocatore [GIOCATORE_2] = 'O';
     return 0;
@@ -131,7 +131,7 @@ int inizializzaGiocatori(char giocatore[NUMERO_GIOCATORI])
 
 // Funzione che inizializza le gettoni
 int inizializzaGettone(char gettone[NUMERO_GIOCATORI])
-{ 
+{
     gettone [GIOCATORE_1] = 'X';
     gettone [GIOCATORE_2] = 'O';
     return 0;
@@ -139,7 +139,7 @@ int inizializzaGettone(char gettone[NUMERO_GIOCATORI])
 
 // Funzione che controlla se il giocatore ha vinto
 int xisWinner (char matrice[RIGHE][COLONNE], char giocatore)
-{ 
+{
     int contatore = 0;
     for (int i = 0; i < RIGHE; i++)
     {
@@ -165,7 +165,7 @@ int xisWinner (char matrice[RIGHE][COLONNE], char giocatore)
 
 // Funzione che gestisce il turno del giocatore
 int giocatore (char matrice[RIGHE][COLONNE], char giocatore ,char tipoGiocatore , string nome)
-{ 
+{
     int riga = 0;
     int colonna = 0;
     int contatore = 0;
@@ -194,7 +194,7 @@ int giocatore (char matrice[RIGHE][COLONNE], char giocatore ,char tipoGiocatore 
             return 0;
         }
     }
-    else 
+    else
     {
         for (int i = RIGHE - 1; i >= 0; i--)// Scorro le righe
         {
@@ -225,14 +225,14 @@ int giocatore (char matrice[RIGHE][COLONNE], char giocatore ,char tipoGiocatore 
 }
 
 // Funzione che inserisce i gettoni nella tabella
-int inserisciGettoni (char matrice[RIGHE][COLONNE], char giocatore ,char tipoGiocatore , string nome)
-{ 
+int inserisciGettone (char matrice[RIGHE][COLONNE], char giocatore ,char tipoGiocatore , string nome)
+{
     int riga = 0;
     int colonna = 0;
     int contatore = 0;
     if (tipoGiocatore == 'U') // Se il giocatore è umano
     {
-        cout << "Inserisci la colonna dove vuoi inserire la pedina: ";
+        cout << "Inserisci la colonna dove vuoi inserire gettone: ";
         cin >> colonna;
         colonna--;
         if (colonna < 0 || colonna > COLONNE - 1) // Controllo che la colonna inserita sia valida
@@ -280,7 +280,7 @@ int inserisciGettoni (char matrice[RIGHE][COLONNE], char giocatore ,char tipoGio
             cout << "Colonna piena, riprova" << endl;
             return 0;
         }
-        cout << nome << " ha inserito la pedina nella colonna " << colonna + 1 << endl;
+        cout << nome << " ha inserito il gettone nella colonna " << colonna + 1 << endl;
     }
     return 1;
 }
@@ -328,10 +328,10 @@ int mossaPC (char *arr)
     cout << endl;
 }*/
 
-int main() 
+int main()
 {
     stampaTitolo();
-    
+
     char matrice[RIGHE][COLONNE];
     char arr[RIGHE * COLONNE];
     char giocatore = 'X';
@@ -355,20 +355,20 @@ int main()
     cout << "Se vuoi giocare contro il COMPUTER digita 2." << endl;
     cout << "Se vuoi far giocare il COMPUTER contro se stesso digita 3." << endl;
     cin >> scelta;
-    
+
     if (scelta == 1)
     {
-        cout << "Hai scelto di giocare contro il pc" << endl;
+        cout << "Hai scelto di giocare player vs player" << endl;
         cout << "Inserisci il tuo nome" << endl;
         cin >> nome;
         cout << "Inserisci il tuo simbolo" << endl;
         cin >> giocatore;
         tipoGiocatore = 'U';
         cout << "Inserisci il simbolo del pc" << endl;
-    } 
+    }
     else if (scelta == 2)
     {
-        cout << "Hai scelto di giocare contro un altro giocatore" << endl;
+        cout << "Hai scelto di giocare player vs computer" << endl;
         cout << "Inserisci il nome del primo giocatore" << endl;
         cin >> nome;
         cout << "Inserisci il simbolo del primo giocatore" << endl;
@@ -379,12 +379,14 @@ int main()
         cout << "Inserisci il simbolo del secondo giocatore" << endl;
         cin >> giocatore;
         tipoGiocatore = 'U';
-    } 
+    }
     else
     {
-        cout << "Scelta non valida" << endl;
+        cout << " " << endl;
+
         return 0;
     }
+
     cout << endl;
     cout << "Iniziamo a giocare!" << endl;
     cout << endl;
@@ -417,18 +419,29 @@ int main()
     cout << endl;
     cout << endl;
     cout << "Inserisci il numero della colonna dove vuoi inserire il tuo gettone" << endl;
+    cout << endl;
+    cin >> colonna;
+    cout << endl;
+    int inserisciGettone;
+    cout <<"Inserisci il numero della colonna" << endl;
+    cin >> inserisciGettone ;
+    
+
+
+    
+
+
     //int inizializzaGettone(char gettone[NUMERO_GIOCATORI]);
     //int inserisciGettoni (char matrice[RIGHE][COLONNE], char giocatore ,char tipoGiocatore , string nome);
-    cout << endl;
-    cout << "Inserisci il numero della colonna dove vuoi inserire il tuo gettone" << endl;
-    cout << endl;
-
-    cout << "Buona fortuna!" << endl;
-    cout << endl;
-    cout << "Inizia " << nome << endl;
-    cout << endl;
-    cout << "Inserisci il numero della colonna dove vuoi inserire il tuo gettone" << endl;
-    cout << endl;
-    cout << "Buona fortuna!" << endl;
-    cout << endl;
+    /* cout << endl;
+     cout << "Inserisci il numero della colonna dove vuoi inserire il tuo gettone" << endl;
+     cout << endl;
+     cout << "Buona fortuna!" << endl;
+     cout << endl;
+     cout << "Inizia " << nome << endl;
+     cout << endl;
+     cout << "Inserisci il numero della colonna dove vuoi inserire il tuo gettone" << endl;
+     cout << endl;
+     cout << "Buona fortuna!" << endl;
+     cout << endl;*/
 }

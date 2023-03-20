@@ -130,10 +130,15 @@ int xisWinner (char matrice[ROWS][COLS], char player) {
     return 0;
 }
 
-    int main() {
+ int main() {
 
     stampaTitolo();
+    cout<<endl;
+    
+    cout << "Benvenuto e preparati a giocare al Forza 4 " << endl;
+    cout << endl;
     play_game();
+
     return 0;
 
        /* int choice;

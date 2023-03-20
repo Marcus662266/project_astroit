@@ -75,6 +75,8 @@ string stampaGiocatore(string tipoGiocatore)
     cout << giocatore << endl;
     return giocatore;
 }
+
+// ho inserito un metodo rtiutilizzabile per inserire i giocatori
 void inserisciTassello(char griglia[RIGHE][COLONNE], int checkRiga, string tipoGiocatore, string giocatoreMomentaneo)
 {
     bool checkInserimento = false;
@@ -259,6 +261,9 @@ int main()
     string giocatore1 = stampaGiocatore("giocatore1");
     string giocatore2 = stampaGiocatore("giocatore2");
     cout << giocatore1 << endl;
-    inserisciTassello(griglia, 5);
+    cout << inserisciTassello << endl;
+    cout << xIsWinner(griglia) << endl;
+    cout << giocatore2 << endl;
+    return 0;
 }
 

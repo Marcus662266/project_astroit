@@ -402,5 +402,6 @@ int main() {
     cout << "Inserisci il numero della colonna dove vuoi inserire il tuo gettone" << endl;
     cout << endl;
     cout << "Buona fortuna!" << endl;
-    cout << endl;
+    
+    
 }

@@ -32,8 +32,10 @@ const int PAREGGIO = 3;
 const int GIOCO_IN_CORSO = 4;
 
 //  Definizione delle funzioni
+
 // Stampa il titolo del programma
-void stampaTitolo(void){
+void stampaTitolo(void)
+{
     cout << endl;
     cout << " ========================================================  \n";
     cout << "| READY TO PLAY...                                       | \n";
@@ -326,9 +328,10 @@ int mossaPC (char *arr)
     cout << endl;
 }*/
 
-int main() {
+int main() 
+{
     stampaTitolo();
-    stampaMenu();
+    
     char matrice[RIGHE][COLONNE];
     char arr[RIGHE * COLONNE];
     char giocatore = 'X';
@@ -343,46 +346,54 @@ int main() {
     int vittoriaGiocatore = 0;
     int vittoriaPareggio = 0;
 
+    cout << endl;
     cout << "Benvenuto e preparati a giocare a forza 4! " << endl;
     cout << endl;
-    cout << "se vuoi giocare contro il pc digita 1." << endl;
-    cout << "se vuoi giocare contro un altro giocatore digita 2" << endl;
+    stampaMenu();
+    cout << endl;
+    cout << "Se vuoi giocare contro un altro giocatore digita 1." << endl;
+    cout << "Se vuoi giocare contro il COMPUTER digita 2." << endl;
+    cout << "Se vuoi far giocare il COMPUTER contro se stesso digita 3." << endl;
     cin >> scelta;
-
-    if (scelta == 1) {
-        cout << "hai scelto di giocare contro il pc" << endl;
-        cout << "inserisci il tuo nome" << endl;
+    
+    if (scelta == 1)
+    {
+        cout << "Hai scelto di giocare contro il pc" << endl;
+        cout << "Inserisci il tuo nome" << endl;
         cin >> nome;
-        cout << "inserisci il tuo simbolo" << endl;
+        cout << "Inserisci il tuo simbolo" << endl;
         cin >> giocatore;
         tipoGiocatore = 'U';
-        cout << "inserisci il simbolo del pc" << endl;
-
-
-    } else if (scelta == 2) {
-        cout << "hai scelto di giocare contro un altro giocatore" << endl;
-        cout << "inserisci il nome del primo giocatore" << endl;
+        cout << "Inserisci il simbolo del pc" << endl;
+    } 
+    else if (scelta == 2)
+    {
+        cout << "Hai scelto di giocare contro un altro giocatore" << endl;
+        cout << "Inserisci il nome del primo giocatore" << endl;
         cin >> nome;
-        cout << "inserisci il simbolo del primo giocatore" << endl;
+        cout << "Inserisci il simbolo del primo giocatore" << endl;
         cin >> giocatore;
         tipoGiocatore = 'U';
-        cout << "inserisci il nome del secondo giocatore" << endl;
+        cout << "Inserisci il nome del secondo giocatore" << endl;
         cin >> nome;
-        cout << "inserisci il simbolo del secondo giocatore" << endl;
+        cout << "Inserisci il simbolo del secondo giocatore" << endl;
         cin >> giocatore;
         tipoGiocatore = 'U';
-    } else {
-        cout << "scelta non valida" << endl;
+    } 
+    else
+    {
+        cout << "Scelta non valida" << endl;
         return 0;
     }
     cout << endl;
     cout << "Iniziamo a giocare!" << endl;
     cout << endl;
-    cout << "La griglia è così composta:" << endl;
+    cout << "La griglia è composta così:" << endl;
     cout << endl;
     cout << endl;
     cout << endl;
     cout << "-------------------------------------------------";
+    
     for (int i = 0; i < RIGHE; i++)
     {
         cout << endl;
@@ -408,6 +419,7 @@ int main() {
     cout << endl;
     cout << "Inserisci il numero della colonna dove vuoi inserire il tuo gettone" << endl;
     cout << endl;
+
     cout << "Buona fortuna!" << endl;
     cout << endl;
     cout << "Inizia " << nome << endl;

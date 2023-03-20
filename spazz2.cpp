@@ -74,3 +74,42 @@ int main() {
     play_game();
     return 0;
 }
+// Stampa il titolo del programma
+void stampaTitolo(void)
+{
+    cout << endl;
+    cout << " ========================================================  \n";
+    cout << "| READY TO PLAY...                                       | \n";
+    cout << "|      _______  _______  ____________     ____      ___  | \n";
+    cout << "|     /  ____/ / ___  / / __  /__   /    /    |    /   | | \n";
+    cout << "|    /  /___  / /  / / / /_/ /  /  /    /     |   / /| | | \n";
+    cout << "|   /  ____/ / /  / / /  _  /  /  /    /  /|  |  / /_| | | \n";
+    cout << "|  /  /     / /__/ / /  / | | /  /___ /  / |  | /____  | | \n";
+    cout << "| /__/     /______/ /__/  |_|/______//__/  |__|      |_| | \n";
+    cout << " ========================================================  \n";
+    cout << "                        Create by... Serge, Marco, Jacopo  \n";
+}
+int xisWinner (char matrice[ROWS][col], char player)
+{
+    int contatore = 0;
+    for (int i = 0; i < ROWS; i++)
+    {
+        for (int j = 0; j < col; j++)
+        {
+            if (matrice [i][j] == player) // Controllo se nella cella ci sono 4 pedine uguali
+            {
+                contatore++;
+                if (contatore == 4)
+                {
+                    return 1;
+                }
+            }
+            else
+            {
+                contatore = 0;
+            }
+        }
+        contatore = 0;
+    }
+    return 0;
+}

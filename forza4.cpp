@@ -287,6 +287,14 @@ int main()
                         cout << "|           GRAZIE PER AVER GIOCATO A FORZA 4!            |" << endl;
                         cout << " ========================================================= " << endl;
                         cout << endl;
+                        cout << endl;
+                        cout << " ======================================================== " << endl;
+                        cout << "|                SE NON VUOI GIOCARE PIU'                |" << endl;
+                        cout << "|            PREMI IL TASTO F13 SULLA TASTIERA           |" << endl;
+                        cout << "|                     ENTRO 2 SECONDI                    |" << endl;
+                        cout << "|                                                        |" << endl;
+                        cout << "|             altrimenti giocherai per sempre!           |" << endl;
+                        cout << " ======================================================== " << endl;
                         break;
                     }
                     tipoGiocatore = 'P';
@@ -314,10 +322,18 @@ int main()
                     if (xisWinner(board, pc))
                     {
                         cout << endl;
-                        cout << "  ======================================================== " << endl;
-                        cout << " |                       HAI PERSO!                       |" << endl;
-                        cout << "  ======================================================== " << endl;
+                        cout << " ======================================================== " << endl;
+                        cout << "|                       HAI PERSO!                       |" << endl;
+                        cout << " ======================================================== " << endl;
                         cout << endl;
+                        cout << endl;
+                        cout << " ======================================================== " << endl;
+                        cout << "|                SE NON VUOI GIOCARE PIU'                |" << endl;
+                        cout << "|            PREMI IL TASTO F13 SULLA TASTIERA           |" << endl;
+                        cout << "|                     ENTRO 2 SECONDI                    |" << endl;
+                        cout << "|                                                        |" << endl;
+                        cout << "|             altrimenti giocherai per sempre!           |" << endl;
+                        cout << " ======================================================== " << endl;
                         break;
                     }
                     tipoGiocatore = 'U';
@@ -326,5 +342,7 @@ int main()
         }
     }
     cout << endl;
+    
+
     return 0;
-}  
+}

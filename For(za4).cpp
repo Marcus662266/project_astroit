@@ -4,13 +4,12 @@ using namespace std;
 // Definisco le costanti
 const int ROWS = 6;
 const int COLS = 7;
-char board[ROWS][COLS]; 
 
+char board[ROWS][COLS];
 
 // Definisco le funzioni
 
-
-// inizializza la board con uno spazio vuoto in ogni cella
+// Inizializza la board con uno spazio "vuoto" in ogni cella
 void init_board()
 {
     for (int i = 0; i < ROWS; i++) // Scorro le righe
@@ -21,7 +20,6 @@ void init_board()
         }
     }
 }
-
 
 // Stampa il titolo del programma
 void stampaTitolo(void)
@@ -39,17 +37,17 @@ void stampaTitolo(void)
     cout << "                        Create by... Serge, Marco, Jacopo  \n";
 }
 
+// Stampa il menù
 void stampaMenu(void)
 {
     cout << endl;
     cout << " =========================================================  \n";
-    cout << "| 1. Player vs Player                                     | \n";
-    cout << "| 2. Player vs Computer                                   | \n";
+    cout << "|                  PLAYER   VS   COMPUTER                 | \n";
     cout << " =========================================================  \n";
-
-    cout << "===========================================================" << endl;
+    cout << endl;
 }
-// visualizza la board di gioco
+
+// Visualizza la board di gioco
 void display_board()
 {
     cout << endl;
@@ -67,20 +65,18 @@ void display_board()
     cout << "  ";
     for (int j = 0; j < COLS; j++)
     {
-        cout << j << "  ";
+        cout << j << "   ";
     }
     cout << endl;
     cout << endl;
 }
 
-
-// inserisce un tassello nella colonna specificata
-// ritorna true se l'inserimento è andato a buon fine, false altrimenti
+// Inserisce un tassello nella colonna specificata
 bool drop_piece(int col, char piece)
 {
     if (col < 0 || col >= COLS)
     {
-        return false; // la colonna non esiste
+        return false; // La colonna non esiste
     }
     for (int i = ROWS - 1; i >= 0; i--)
     {
@@ -90,24 +86,24 @@ bool drop_piece(int col, char piece)
             return true;
         }
     }
-    return false; // la colonna è piena
+    return false; // La colonna è piena
 }
 
-// gioco completo
+// Inizia il gioco
 void play_game()
 {
     init_board();
     display_board();
 
-    char player1 ;
-    char player2 ;
+    char player1;
+    char player2;
     char current_player = player1;
 
     while (true)
     {
         cout << "Turno del giocatore " << current_player << endl;
         int col;
-        cout << "Inserisci la colonna (0-6): ";
+        cout << "Inserisci il numero della colonna (0-6): ";
         cin >> col;
 
         if (drop_piece(col, current_player))
@@ -124,14 +120,17 @@ void play_game()
         }
         else
         {
-            cout << "La colonna è piena, riprova." << endl;
+            cout << " ========================================================= " << endl;
+            cout << "|                  COLONNA PIENA! RIPROVA                 |" << endl;
+            cout << " ========================================================= " << endl;
         }
     }
 }
+
+// Controlla se c'è una vittoria
 int xisWinner(char board[ROWS][COLS], char player)
 {
-
-    // controllo orizzontale
+    // Controllo orizzontale
     for (int i = 0; i < ROWS; i++)
     {
         for (int j = 0; j < COLS - 3; j++)
@@ -144,7 +143,7 @@ int xisWinner(char board[ROWS][COLS], char player)
         }
     }
 
-    // controllo verticale
+    // Controllo verticale
     for (int i = 0; i < ROWS - 3; i++)
     {
         for (int j = 0; j < COLS; j++)
@@ -157,7 +156,7 @@ int xisWinner(char board[ROWS][COLS], char player)
         }
     }
 
-    // controllo diagonale
+    // Controllo diagonale
     for (int i = 0; i < ROWS - 3; i++)
     {
         for (int j = 0; j < COLS - 3; j++)
@@ -170,7 +169,7 @@ int xisWinner(char board[ROWS][COLS], char player)
         }
     }
 
-    // controllo diagonale inversa
+    // Controllo diagonale inversa
     for (int i = 3; i < ROWS; i++)
     {
         for (int j = 0; j < COLS - 3; j++)
@@ -182,7 +181,6 @@ int xisWinner(char board[ROWS][COLS], char player)
             }
         }
     }
-
     return 0;
 }
 
@@ -193,27 +191,61 @@ int main()
     char giocatore;
     char tipoGiocatore;
     char pc = 'O';
-    //char board[ROWS][COLS];
     int colonna;
     int riga;
+
     stampaTitolo();
-    cout << endl;
 
     cout << endl;
-    cout << "===========================================================" << endl;
-    //cout << "  " << Benvenuto e preparati a giocare a forza 4!  << "  "     << endl;
-    cout << "===========================================================" << endl;
     cout << endl;
+    cout << " ========================================================= " << endl;
+    cout << "|        BENVENUTO E PREPARATI A GIOCARE A FORZA 4!       |" << endl;
+    cout << " ========================================================= " << endl;
+    cout << endl;
+
     stampaMenu();
-    cout << endl;
-    cout << "Digita 1 per giocare Player vs Player." << endl;
-    cout << "Digita 2 per giocare Player vs Computer." << endl;
-    cin >> scelta;
 
-  
-    cout << "Inizia il gioco!" << endl;
     cout << endl;
-   // int board[ROWS][COLS];
+    cout << " ========================================================= " << endl;
+    cout << "|                                                         |" << endl;
+    cout << "|              DIGITA 1 PER INIZIARE IL GIOCO             |" << endl;
+    cout << "|                                                         |" << endl;
+    cout << " ========================================================= " << endl;
+    cout << endl;
+    cin >> scelta;
+    if(scelta == 1)
+    {
+        cout << endl;
+        cout << " ========================================================= " << endl;
+        cout << "|                INSERISCI IL TUO NOME                    |" << endl;
+        cout << " ========================================================= " << endl;
+        cin >> nome;
+        cout << endl;
+        cout << endl;
+        cout << " ========================================================= " << endl;
+        cout << "|          INSERISCI IL SIMBOLO CHE VUOI USARE            |" << endl;
+        cout << " ========================================================= " << endl;
+        cin >> giocatore;
+        cout << endl;
+        tipoGiocatore = 'U';
+    }
+    else
+    {
+        cout << endl;
+        cout << " ========================================================= " << endl;
+        cout << "|                   SCELTA NON VALIDA!                    |" << endl;
+        cout << " ========================================================= " << endl;
+        cout << endl;
+        return 0;
+    }
+
+    cout << endl;
+    cout << " ========================================================= " << endl;
+    cout << "|                      INIZIA IL GIOCO!                   |" << endl;
+    cout << " ========================================================= " << endl;
+    cout << endl;
+    cout << endl;
+    
     bool continua = true;
     while (continua)
     {
@@ -223,12 +255,25 @@ int main()
         {
             if (tipoGiocatore == 'U')
             {
-                cout << "E' il turno di " << nome << endl;
-                cout << "Inserisci la colonna in cui vuoi inserire il tuo simbolo" << endl;
+                cout << endl;
+                cout << " ========================================================= " << endl;
+                cout << "|                      E'IL TUO TURNO!                    |" << endl;
+                cout << " ========================================================= " << endl;
+                cout << endl;
+                cout << endl;
+                cout << " ========================================================================= " << endl;
+                cout << "|      INSERISCI IL NUMERO DELLA COLONNA DOVE VUOI METTERE IL GETTONE     |" << endl;
+                cout << " ========================================================================= " << endl;
                 cin >> colonna;
+                cout << endl;
+
                 if (colonna < 0 || colonna > 6)
                 {
-                    cout << "Colonna non valida" << endl;
+                    cout << endl;
+                    cout << " ========================================================= " << endl;
+                    cout << "|                    COLONNA NON VALIDA!                  |" << endl;
+                    cout << " ========================================================= " << endl;
+                    cout << endl;
                     continue;
                 }
                 if (drop_piece(colonna, giocatore))
@@ -236,60 +281,50 @@ int main()
                     display_board();
                     if (xisWinner(board, giocatore))
                     {
-                        cout << "Hai vinto!" << endl;
+                        cout << " ========================================================= " << endl;
+                        cout << "|                       HAI VINTO!                        |" << endl;
+                        cout << "|                                                         |" << endl;
+                        cout << "|           GRAZIE PER AVER GIOCATO A FORZA 4!            |" << endl;
+                        cout << " ========================================================= " << endl;
+                        cout << endl;
                         break;
                     }
                     tipoGiocatore = 'P';
                 }
                 else
                 {
-                    cout << "Colonna piena, riprova" << endl;
+                    cout << endl;
+                    cout << " ========================================================= " << endl;
+                    cout << "|                  COLONNA PIENA! RIPROVA                 |" << endl;
+                    cout << " ========================================================= " << endl;
+                    cout << endl;
                 }
             }
             else
             {
-                cout << "E' il turno del Computer" << endl;
+                cout << endl;
+                cout << " ========================================================= " << endl;
+                cout << "|                 E' IL TURNO DEL COMPUTER                |" << endl;
+                cout << " ========================================================= " << endl;
+                cout << endl;
                 colonna = rand() % 7;
                 if (drop_piece(colonna, pc))
                 {
                     display_board();
                     if (xisWinner(board, pc))
                     {
-                        cout << "Hai perso!" << endl;
+                        cout << endl;
+                        cout << "  ======================================================== " << endl;
+                        cout << " |                       HAI PERSO!                       |" << endl;
+                        cout << "  ======================================================== " << endl;
+                        cout << endl;
                         break;
                     }
                     tipoGiocatore = 'U';
                 }
             }
         }
-        cout << "Vuoi continuare a giocare? (s/n)" << endl;
-        char risposta;
-        cin >> risposta;
-        if (risposta == 'n')
-        {
-            continua = false;
-        }
-
-
     }
-
     cout << endl;
-    play_game();
-
     return 0;
-
-    /* int choice;
-     cout << "1. Gioca" << endl;
-     cout << "2. Esci" << endl;
-     cout << "Scelta: ";
-     cin >> choice;
-     if (choice == 2) {
-         return 0;
-     }
-     // continua a giocare
-     if (choice == 1) {
-         play_game();
-     }
-     play_game();
-     return 0;*/
-}
+}  

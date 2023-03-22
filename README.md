@@ -25,7 +25,7 @@ Il programma viene creato in C++ utilizzando:
 
  #  OBIETTIVO DEL GIOCO
 
-L'obiettivo di ogni giocatore (G1,G2) è quello di mettere in fila quattro pedine proprie (X,O). La scacchiera rettangolare è posta in orizzontale. 
+L'obiettivo di ogni giocatore è quello di mettere in fila quattro pedine proprie (X,O). La scacchiera rettangolare è posta in orizzontale. 
 Il gioco termina automaticamente (il programma effetua il controllo) quando uno dei giocatori ha messo in fila quattro delle sue pedine in verticale o in diagonale o in orizzontale.
 
 # VITTORIA IN DIAGONALE(X)

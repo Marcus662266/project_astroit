@@ -7,7 +7,7 @@
 # INTRODUZIONE AL PROGETTO
 
 Questo progetto viene realizzato per il corso di ingegneria del software della società ASTROIT.
-Il progetto consiste nella creazione del gioco "Forza 4", nel quale sarà possibile giocare in locale o in rete.
+Il progetto consiste nella creazione del gioco "Forza 4", nel quale sarà possibile giocare in locale.
 Il programma viene creato in C++ utilizzando:
 
 # Librerie adoperate durante il corso:
@@ -16,8 +16,6 @@ Il programma viene creato in C++ utilizzando:
                                         - <string>
                                         - <array>
                                         - <random>
-                                        - <vector>
-
 
   #  READY TO PLAY....   
 
@@ -48,16 +46,11 @@ E alla fine quando un giocatore mette in fila quattro pedine proprie in vertical
 # COME GIOCARE AL FORZA 4
 
 Per giocare bisogna scaricare il file "forza4.exe" e lanciarlo.
-Il gioco è in italiano e si gioca in locale o in rete.
+Il gioco è in italiano e si gioca in locale.
 Per giocare in locale bisogna inserire il nome dei due giocatori e premere "OK".
-Per giocare in rete bisogna inserire il nome del giocatore e premere "OK".
-In seguito bisogna inserire l'indirizzo IP del giocatore con cui si vuole giocare e premere "OK".
 Il giocatore che ha inserito l'indirizzo IP deve premere "OK" per avviare la partita.
 
 
                                      Grazie per aver scaricato questo progetto.
                                              Buon divertimento a presto.
                  
-
-              
-                               

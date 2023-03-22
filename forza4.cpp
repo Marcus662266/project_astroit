@@ -1,4 +1,5 @@
 #include <iostream>
+#include <random>
 using namespace std;
 
 // Definisco le costanti
@@ -88,45 +89,6 @@ bool drop_piece(int col, char piece)
     }
     return false; // La colonna è piena
 }
-
-// Inizia il gioco
-void play_game()
-{
-    init_board();
-    display_board();
-
-    char player1;
-    char player2;
-    char current_player = player1;
-
-    while (true)
-    {
-        cout << "Turno del giocatore " << current_player << endl;
-        int col;
-        cout << "Inserisci il numero della colonna (0-6): ";
-        cin >> col;
-
-        if (drop_piece(col, current_player))
-        {
-            display_board();
-            if (current_player == player1)
-            {
-                current_player = player2;
-            }
-            else
-            {
-                current_player = player1;
-            }
-        }
-        else
-        {
-            cout << " ========================================================= " << endl;
-            cout << "|                  COLONNA PIENA! RIPROVA                 |" << endl;
-            cout << " ========================================================= " << endl;
-        }
-    }
-}
-
 // Controlla se c'è una vittoria
 int xisWinner(char board[ROWS][COLS], char player)
 {
@@ -192,12 +154,13 @@ int main()
     char tipoGiocatore;
     char pc = 'O';
     int colonna;
-    int riga;
 
+    cout <<"\033[35m"; // colore viola
     stampaTitolo();
 
     cout << endl;
     cout << endl;
+    cout <<"\033[37m"; //colore bianco
     cout << " ========================================================= " << endl;
     cout << "|        BENVENUTO E PREPARATI A GIOCARE A FORZA 4!       |" << endl;
     cout << " ========================================================= " << endl;
@@ -232,6 +195,7 @@ int main()
     else
     {
         cout << endl;
+        cout <<"\033[31m"; //colore rosso
         cout << " ========================================================= " << endl;
         cout << "|                   SCELTA NON VALIDA!                    |" << endl;
         cout << " ========================================================= " << endl;
@@ -240,6 +204,7 @@ int main()
     }
 
     cout << endl;
+    cout <<"\033[35m"; //colore viola
     cout << " ========================================================= " << endl;
     cout << "|                      INIZIA IL GIOCO!                   |" << endl;
     cout << " ========================================================= " << endl;
@@ -248,7 +213,10 @@ int main()
     
     bool continua = true;
     while (continua)
-    {
+    {               
+        
+      cout <<"\033[32m"; //colore verde
+
         init_board();
         display_board();
         while (true)
@@ -270,9 +238,12 @@ int main()
                 if (colonna < 0 || colonna > 6)
                 {
                     cout << endl;
+                    cout <<"\033[31m"; //colore rosso
                     cout << " ========================================================= " << endl;
                     cout << "|                    COLONNA NON VALIDA!                  |" << endl;
                     cout << " ========================================================= " << endl;
+                    cout <<"\033[32m"; //colore verde
+
                     cout << endl;
                     continue;
                 }
@@ -281,6 +252,8 @@ int main()
                     display_board();
                     if (xisWinner(board, giocatore))
                     {
+                        cout << endl;
+                        cout <<"\033[33m"; //colore giallo
                         cout << " ========================================================= " << endl;
                         cout << "|                       HAI VINTO!                        |" << endl;
                         cout << "|                                                         |" << endl;
@@ -288,6 +261,7 @@ int main()
                         cout << " ========================================================= " << endl;
                         cout << endl;
                         cout << endl;
+                        cout <<" \033[36m"; //colore azzurro
                         cout << " ======================================================== " << endl;
                         cout << "|                SE NON VUOI GIOCARE PIU'                |" << endl;
                         cout << "|            PREMI IL TASTO F13 SULLA TASTIERA           |" << endl;
@@ -295,6 +269,8 @@ int main()
                         cout << "|                                                        |" << endl;
                         cout << "|             altrimenti giocherai per sempre!           |" << endl;
                         cout << " ======================================================== " << endl;
+                        cout <<"\033[32m"; //colore verde
+
                         break;
                     }
                     tipoGiocatore = 'P';
@@ -302,15 +278,18 @@ int main()
                 else
                 {
                     cout << endl;
+                    cout <<"\033[31m"; //colore rosso
                     cout << " ========================================================= " << endl;
                     cout << "|                  COLONNA PIENA! RIPROVA                 |" << endl;
                     cout << " ========================================================= " << endl;
                     cout << endl;
+                    cout <<"\033[32m"; //colore verde
                 }
             }
             else
             {
                 cout << endl;
+                cout <<"\033[32m"; //colore verde
                 cout << " ========================================================= " << endl;
                 cout << "|                 E' IL TURNO DEL COMPUTER                |" << endl;
                 cout << " ========================================================= " << endl;
@@ -322,11 +301,13 @@ int main()
                     if (xisWinner(board, pc))
                     {
                         cout << endl;
+                        cout <<"\033[31m"; //colore rosso
                         cout << " ======================================================== " << endl;
                         cout << "|                       HAI PERSO!                       |" << endl;
                         cout << " ======================================================== " << endl;
                         cout << endl;
                         cout << endl;
+                        cout <<" \033[36m"; //colore azzurro
                         cout << " ======================================================== " << endl;
                         cout << "|                SE NON VUOI GIOCARE PIU'                |" << endl;
                         cout << "|            PREMI IL TASTO F13 SULLA TASTIERA           |" << endl;
@@ -334,6 +315,8 @@ int main()
                         cout << "|                                                        |" << endl;
                         cout << "|             altrimenti giocherai per sempre!           |" << endl;
                         cout << " ======================================================== " << endl;
+                        cout <<"\033[32m"; //colore verde
+
                         break;
                     }
                     tipoGiocatore = 'U';
